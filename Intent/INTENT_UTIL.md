@@ -9,3 +9,4 @@ private val geofenceIntent: PendingIntent by lazy {
         }
     }
 ```
+TODO: Provide explanation
