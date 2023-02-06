@@ -30,7 +30,7 @@ inline fun Modifier.ifTrue(
 
 ### Compose Conditional Modifier extension function
 ```
-fun Modifier.conditional(predicate: Boolean, onTrue: () -> Modifier, onFalse: () -> Modifier) =
+inline fun Modifier.conditional(predicate: Boolean, onTrue: () -> Modifier, onFalse: () -> Modifier) =
     then(
         when (predicate) {
             true -> onTrue()
