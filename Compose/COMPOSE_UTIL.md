@@ -27,3 +27,12 @@ inline fun Modifier.ifTrue(
     return then(if (value) builder() else Modifier)
 }
 ```
+
+### Compose Conditional Modifier extension function
+fun Modifier.conditional(predicate: Boolean, onTrue: () -> Modifier, onFalse: () -> Modifier) =
+    then(
+        when (predicate) {
+            true -> onTrue()
+            false -> onFalse()
+        }
+    )
