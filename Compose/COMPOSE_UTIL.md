@@ -75,3 +75,22 @@ fun Modifier.horizontalSwipeGesture(
     }
 }
 ```
+
+### ViewModelOwnerPlugin
+```
+class ViewModelOwnerPlugin : NodeLifecycleAware, ViewModelStoreOwner, LifecycleEventObserver {
+
+    override val viewModelStore: ViewModelStore = ViewModelStore()
+
+    override fun onCreate(lifecycle: Lifecycle) {
+        lifecycle.addObserver(this)
+    }
+
+    override fun onStateChanged(source: LifecycleOwner, event: Lifecycle.Event) {
+        Log.d("ViewModelOwnerPlugin", "onStateChanged: $event")
+        if (event == Lifecycle.Event.ON_DESTROY) {
+            viewModelStore.clear()
+        }
+    }
+}
+```
